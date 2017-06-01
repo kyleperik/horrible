@@ -1,0 +1,18 @@
+<div>
+    <div>
+        <label for="room">Room: </label>
+        <span v-if="joined">{{ room }}</span>
+        <input v-else id="room" type="text" v-model="room" />
+    </div>
+    <div>
+        <label for="username">Username: </label>
+        <span v-if="joined">{{ username }}</span>
+        <input v-else id="username" type="text" v-model="username" />
+    </div>
+    <button v-if="!joined" :disabled="!username || !room" @click="join_room">Join</button>
+    <div v-if="question">
+        <span>{{ question }}</span>
+        <input type="text" v-model="answer" />
+        <button @click="submit">Submit</button>
+    </div>
+</div>

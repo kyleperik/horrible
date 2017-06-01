@@ -1,0 +1,12 @@
+<div>
+    <div>HORRIBLE</div>
+    <div v-if="!control && screen_size === 'SMALL' || control === 'CONTROLLER'">
+        <controller @set_control="set_control('CONTROLLER', true)" />
+        <button v-if="!control_set" @click="set_control('GAME')">Use as Host</button>
+    </div>
+    <div v-if="!control && screen_size === 'LARGE' || control === 'GAME'">
+        <game @set_control="set_control('GAME', true)" @push_message="push_message" />
+        <button v-if="!control_set" @click="set_control('CONTROLLER')">Use as Controller</button>
+    </div>
+    <div v-for="message in messages">{{ message }}</div>
+</div>

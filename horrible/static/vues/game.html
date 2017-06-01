@@ -1,0 +1,8 @@
+<div>
+    <div v-if="room">
+        <div>Game started! Room number: {{ room }}</div>
+        <div>Users joined: <span v-for="player in players"> {{ player }}</span></div>
+    </div>
+    <button v-else @click="create_game">Create a new Game</button>
+    <button v-if="room && !started" :disabled="players.length < 1" @click="start_game">Start Game</button>
+</div>
