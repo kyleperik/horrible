@@ -1,4 +1,4 @@
-<div>
+<div v-if="!quit">
     <div>
         <label for="room">Room: </label>
         <span v-if="joined">{{ room }}</span>
@@ -15,4 +15,7 @@
         <input type="text" v-model="answer" />
         <button @click="submit">Submit</button>
     </div>
+</div>
+<div v-else>
+    Host has left
 </div>

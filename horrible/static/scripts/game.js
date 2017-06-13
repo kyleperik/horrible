@@ -19,6 +19,9 @@
             horrible.socket.on('joined', function (username) {
                 that.players.push(username);
             });
+            horrible.socket.on('start_answers', function () {
+                console.log('start answers')
+            });
         },
         methods: {
             create_game: function () {

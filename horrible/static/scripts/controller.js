@@ -6,7 +6,8 @@
                 username: '',
                 room: '',
                 question: null,
-                answer: ''
+                answer: '',
+                quit: false
             };
         },
         created: function () {
@@ -18,10 +19,13 @@
                 }
             });
             horrible.socket.on('game_started', function () {
-                horrible.socket.emit('get_question', that.username, that.room);
+                horrible.socket.emit('get_question', that.room);
             });
             horrible.socket.on('question', function (question) {
                 that.question = question;
+            });
+            horrible.socket.on('quit', function () {
+                that.quit = true;
             });
         },
         methods: {
@@ -32,7 +36,7 @@
                 });
             },
             submit: function () {
-                horrible.socket.emit('answer', this.answer);
+                horrible.socket.emit('answer', this.room, this.answer);
             }
         }
     });
